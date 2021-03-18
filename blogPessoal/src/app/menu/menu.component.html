@@ -1,36 +1,40 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- Perfil + nome usuário -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <img src="../../assets/img/perfil-mulher.jpg" alt="perfil-usuario" width="50px" height="50px" class=" img-fluid rounded-circle">
-        </li>
-        <li class="nav-item pl-3 d-flex align-items-center">
-          <p class=" m-0 pl-4 font-weight-bold text-white fs-16">Nome do usuário</p>
-        </li>
-      </ul>
+<div class="container-fluid d-flex flex-row justify-content-between align-items-center bg-secondary">
+    <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light bg-secondary menu-usuario">
+           <!-- Perfil + nome usuário -->
+            <div class="d-flex flex-row justify-content-start m-0" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active d-flex flex-row justify-content-start align-items-center border-dark rounded-pill bg-light pr-2 m-2">
+                <img src="../../assets/img/perfil-mulher.jpg" height="50px" class=" img-fluid rounded-circle p-0 m-0 img-perfil">
+                <p class=" m-0 p-2 font-weight-bold text-dark fs-14">Nome do usuário</p>
+                </li>
+            </ul>
+            </div>
+            <!-- /Perfil + nome usuário -->
+           
+        </nav>
     </div>
-    <!-- /Perfil + nome usuário -->
-    <!-- Seção editar/sair do usuário -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto mr-5 pr-5">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <fa-icon [icon]="faUserEdit" class="fs-25 ml-2 pl-4 text-white"></fa-icon> 
+    <div class="row">
+        <h2 class="text-white boas-vindas-txt"> Bem vindo ao Blog</h2>
+    </div>
+    <div class="row ">
+         <!-- Seção editar/sair do usuário -->
+         <div class="btn-group dropleft">
+            <button type="button" class="btn btn-secondary dropdown-toggle button-menu-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <fa-icon [icon]="faUserEdit" class="fs-25 ml-2 pl-2 text-white"></fa-icon>
+            </button>
+            <div class="dropdown-menu menu-perfil-dropdown">
+                <a class="dropdown-item d-flex justify-content-between align-items-center m-0 p-2" href="#">
+                    <span class="fs-14">Configurações</span> 
+                    <fa-icon [icon]="faUserCog" class="fs-16 text-secondary d-flex align-items-center"></fa-icon> 
                 </a>
-                <div class="dropdown-menu mx-auto" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item d-flex justify-content-between  m-0 p-2" href="#">
-                        Configurações <fa-icon [icon]="faUserCog" class="fs-16 text-secondary d-flex align-items-center"></fa-icon> 
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item d-flex justify-content-between m-0 p-2" href="#">Sair 
+                <div class="dropdown-divider"></div>
+                    <a class="dropdown-item d-flex justify-content-between align-items-center m-0 p-2" href="#">
+                        <span class="fs-14">Sair </span>
                         <fa-icon [icon]="faSignOutAlt" class="fs-16  text-secondary d-flex align-items-center"></fa-icon> 
                     </a>
-                </div>
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
-  </nav>
+</div>
+
