@@ -9,5 +9,5 @@ export class UserLogin{
     public url_foto: string;
     public codigo_usuario: number;
     public tipo: string;
-    public postagensUsuario: Postagem;
+    public postagensUsuario: Postagem[];
 }   
