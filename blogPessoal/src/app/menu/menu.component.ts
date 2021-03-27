@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faUserEdit, faSignOutAlt, faUserCog } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment.prod';
 
@@ -18,10 +19,24 @@ export class MenuComponent implements OnInit {
   foto: string= environment.foto;
   codigo_usuario: number= environment.codigo_usuario;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     console.log(this.foto)
   }
 
+  sair(){
+    if(environment.token == ''){
+      alert("Sua seção foi encerrada, faça o login novamente");
+      this.router.navigate(['/entrar']);
+
+      //reseta o environment
+      environment.token= '';
+      environment.nome= '';
+      environment.id= 0;
+      environment.foto= '';
+      environment.codigo_usuario= 0;
+
+    }
+  }
 }
