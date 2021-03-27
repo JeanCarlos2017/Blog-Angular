@@ -27,7 +27,7 @@ export class MenuComponent implements OnInit {
 
   sair(){
     if(environment.token == ''){
-      alert("Sua seção foi encerrada, faça o login novamente");
+      // alert("Sua seção foi encerrada, faça o login novamente");
       this.router.navigate(['/entrar']);
 
       //reseta o environment
