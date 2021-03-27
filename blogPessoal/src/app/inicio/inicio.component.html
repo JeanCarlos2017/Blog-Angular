@@ -14,7 +14,8 @@
 
             <div class="row d-flex justify-content-center mt-3 mb-5">
                 <div class="col-md-6 text-white">
-                    <button class="btn btn-light mr-2">Nova Postagem</button>
+                    <button class="btn btn-light mr-2" data-toggle="modal" data-target="#modalNovaPostagem">Nova
+                        Postagem</button>
                     <a class="btn btn-outline-light" href="#divPostagens">Ver Postagem</a>
                 </div>
             </div>
@@ -39,19 +40,22 @@
                 Postagens</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-secondary font-weight-bold" id="minhas-postagens-tab" data-toggle="tab" href="#minhas-postagens"
-                role="tab" aria-controls="nav-minhas-postagens" aria-selected="false">Minhas Postagens</a>
+            <a class="nav-link text-secondary font-weight-bold" id="minhas-postagens-tab" data-toggle="tab"
+                href="#minhas-postagens" role="tab" aria-controls="nav-minhas-postagens" aria-selected="false">Minhas
+                Postagens</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-secondary font-weight-bold" id="postabem-tema-tab" data-toggle="tab" href="#postagemTema"
-                role="tab" aria-controls="nav-postagem-tema" aria-selected="false">Postagens por tema</a>
+            <a class="nav-link text-secondary font-weight-bold" id="postabem-tema-tab" data-toggle="tab"
+                href="#postagemTema" role="tab" aria-controls="nav-postagem-tema" aria-selected="false">Postagens por
+                tema</a>
         </li>
     </ul>
     <!-- fim  links -->
     <!-- area de conteudo-->
     <div class="tab-content" id="myTabContent">
         <!-- todas Postagens -->
-        <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-todas-postagens-tab">
+        <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel"
+            aria-labelledby="nav-todas-postagens-tab">
             Todas as postagens
         </div>
         <!-- minhas postagens -->
@@ -67,4 +71,47 @@
 
 <!-- fim container que exibe as postagens-->
 
+<!-- MOdal para criação de novas postagens-->
+<div class="modal fade" id="modalNovaPostagem" tabindex="-1" role="dialog" aria-labelledby="modal-nova-postagem-title"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-nova-postagem-title">Nova Postagem</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- form para cadastro de nova postagem -->
+            <div class="modal-body">
+                <form>
+                    <!-- titulo -->
+                    <div class="form-group">
+                        <label for="tituloInput">Título</label>
+                        <input type="text" class="form-control" id="tituloInput" placeholder="escreva o título">
+                    </div>
+                    <!-- texto/corpo-->
+                    <div class="form-group">
+                        <label for="textoInput">Texto</label>
+                        <textarea class="form-control" id="textoInput" placeholder="digite o texto de sua postagem"
+                            aria-describedby="ajuda-postagem"></textarea>
+                        <small id="ajuda-postagem" class="form-text text-muted">Dica: para conseguir um maior engajamento escreva um texto claro e objetivo</small>
+                    </div>
+                    <!-- tema -->
+                    <div class="form-group">
+                        <label for="temaInput">Selecione um tema ou <a href="">ou cadastre um novo</a>: </label>
+                        <select name="tema" id="tema" class="form-control">
+                            <option value="">Temas</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success">Publicar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- fim modal para criação de novas postagens-->
