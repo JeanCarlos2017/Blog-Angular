@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { UserLogin } from '../model/UserLogin';
@@ -12,9 +13,10 @@ import { AuthService } from '../service/auth.service';
 export class LoginComponent implements OnInit {
 
   userLogin: UserLogin= new UserLogin();
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private title: Title) { }
 
   ngOnInit(): void {
+    this.title.setTitle("Entre no Blog");
   }
   
   login(){

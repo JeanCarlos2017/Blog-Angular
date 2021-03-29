@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { User } from '../model/User';
 import { UserLogin } from '../model/UserLogin';
@@ -15,10 +16,11 @@ export class CadastroComponent implements OnInit {
   confirmarSenha: string;
   tipoUsuario: string;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private title: Title) { }
 
   ngOnInit(): void {
     window.scroll(0,0);
+    this.title.setTitle("Cadastre-se no Blog");
   }
 
   confirmPassword(event: any){
