@@ -22,6 +22,8 @@ export class TemaComponent implements OnInit {
       //alert("Sua seção foi encerrada, faça o login novamente");
       this.router.navigate(['/entrar']);
     }
+
+    this.findAllTema();
   }
 
   cadastrar(){
@@ -29,6 +31,13 @@ export class TemaComponent implements OnInit {
       this.tema= resp;
       alert("Tema cadastrado com sucesso! ");
       this.tema= new Tema();
+      this.findAllTema(); //atualizo a lista de temas 
+    })
+  }
+
+  findAllTema(){
+    this.temaService.getAllTema().subscribe((resp: Tema[]) =>{
+      this.listaTemas= resp;
     })
   }
 }
