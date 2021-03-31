@@ -1,3 +1,6 @@
+import { PostagemService } from "../service/postagem.service";
+import { Postagem } from "./Postagem";
+
 export class User{
     public id_usuario: number;
     public email: string;
@@ -6,4 +9,5 @@ export class User{
     public url_foto: string;
     public codigo_usuario: number;
     public tipo: string;
+    public postagensUsuario: Postagem[];
 }

@@ -40,7 +40,7 @@
                 Postagens</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-secondary font-weight-bold" id="minhas-postagens-tab" data-toggle="tab"
+            <a (click)= 'findByIdUser()' class="nav-link text-secondary font-weight-bold" id="minhas-postagens-tab" data-toggle="tab"
                 href="#minhas-postagens" role="tab" aria-controls="nav-minhas-postagens" aria-selected="false">Minhas
                 Postagens</a>
         </li>
@@ -90,11 +90,29 @@
         </div>
         <!-- minhas postagens -->
         <div class="tab-pane fade" id="minhas-postagens" role="tabpanel" aria-labelledby="nav-minhas-postagens-tab">
-            minhas postagens
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col mt-2" *ngFor='let post of user.postagensUsuario'>
+                    <div class="card" >
+                        <div class="card-body">
+                            <h5 class="card-title m-0">{{post.titulo}}</h5>
+                            <small *ngIf='post.tema != null' class="text-muted"> Tema: {{post.tema.descricao}}</small>
+                            <p class="card-text mt-3">{{post.texto}}</p>
+                            <p class="card-text">
+                              <small class="text-muted">
+                                {{post.data | date: 'dd/MM/yyyy'}} às {{post.data | date: 'HH:mm'}}                               
+                              </small>
+                            </p>
+                            <p><small class="text-muted">by {{user.nome}}</small></p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+         <!-- minhas postagens -->
         <!-- postagens por tema -->
         <div class="tab-pane fade" id="postagemTema" role="tabpanel" aria-labelledby="nav-postagem-tema-tab">
-            postagens por tema
+            
         </div>
     </div>
 </div>

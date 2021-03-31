@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -23,6 +24,9 @@ export class InicioComponent implements OnInit {
   idUser= environment.id;
   postagemList: Postagem[];
 
+  token= {
+    headers: new HttpHeaders().set('Authorization', environment.token)
+  }
 
   constructor(
     private router: Router,
@@ -37,6 +41,7 @@ export class InicioComponent implements OnInit {
     this.title.setTitle("Página Inicial do Blog");
     this.getAllTemas();
     this.getAllPostagens();
+
   }
 
   sair(){
@@ -80,5 +85,9 @@ export class InicioComponent implements OnInit {
     })
   }
 
- 
+  findByIdUser(){
+    this.authService.getByIdUser(this.idUser, this.token).subscribe( (resp: User)=>{
+        this.user= resp;
+    })
+  }
 }
