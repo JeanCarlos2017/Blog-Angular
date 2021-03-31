@@ -87,28 +87,36 @@
                 <form>
                     <!-- titulo -->
                     <div class="form-group">
-                        <label for="tituloInput">Título</label>
-                        <input type="text" class="form-control" id="tituloInput" placeholder="escreva o título">
+                        <label for="titulo">Título</label>
+                        <input [(ngModel)]='postagem.titulo' name="titulo" type="text" class="form-control" id="titulo" placeholder="escreva o título">
                     </div>
                     <!-- texto/corpo-->
                     <div class="form-group">
-                        <label for="textoInput">Texto</label>
-                        <textarea class="form-control" id="textoInput" placeholder="digite o texto de sua postagem"
-                            aria-describedby="ajuda-postagem"></textarea>
+                        <label for="texto">Texto</label>
+                        <textarea [(ngModel)]='postagem.texto' name="texto" class="form-control" id="texto" placeholder="digite o texto de sua postagem"
+                            aria-describedby="ajuda-postagem">
+                        </textarea>
                         <small id="ajuda-postagem" class="form-text text-muted">Dica: para conseguir um maior engajamento escreva um texto claro e objetivo</small>
                     </div>
                     <!-- tema -->
                     <div class="form-group">
-                        <label for="temaInput">Selecione um tema ou <a data-dismiss="modal" routerLink='/tema'>ou cadastre um novo</a>: </label>
-                        <select name="tema" id="tema" class="form-control">
+                        <label for="tema">Selecione um tema ou <a data-dismiss="modal" routerLink='/tema'>ou cadastre um novo</a>: </label>
+                        <select name="tema" id="tema" class="form-control" [(ngModel)]= 'idTema'
+                        (change)='findByIdTema()'>
                             <option value="">Temas</option>
+                            <option *ngFor='let tema of temaList' value="{{tema.id}}" >
+                                {{tema.descricao}}
+                            </option>
                         </select>
                     </div>
+                    <!-- fim lista tema -->
                 </form>
             </div>
             <div class="modal-footer d-flex justify-content-between">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success">Publicar</button>
+                <button type="button" class="btn btn-success" (click)='publicar()' data-dismiss="modal">
+                    Publicar
+                </button>
             </div>
         </div>
     </div>
