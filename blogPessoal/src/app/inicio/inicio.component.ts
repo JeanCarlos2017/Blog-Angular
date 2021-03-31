@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
 import { User } from '../model/User';
+import { AuthService } from '../service/auth.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
 
@@ -20,19 +21,22 @@ export class InicioComponent implements OnInit {
   temaEscolhido: Tema= new Tema();
   user: User= new User();
   idUser= environment.id;
+  postagemList: Postagem[];
 
 
   constructor(
     private router: Router,
      private title: Title, 
      private postagemService: PostagemService, 
-     private temaService: TemaService
+     private temaService: TemaService, 
+     private authService: AuthService
      ) { }
 
   ngOnInit(): void {
     this.sair();
     this.title.setTitle("Página Inicial do Blog");
     this.getAllTemas();
+    this.getAllPostagens();
   }
 
   sair(){
@@ -64,6 +68,17 @@ export class InicioComponent implements OnInit {
       this.postagem= resp;
       alert('Postagem cadastrada com sucesso!')
       this.postagem= new Postagem();
+
+      //atualiz a lista de postagens 
+      this.getAllPostagens();
     })
   }
+
+  getAllPostagens(){
+    this.postagemService.getAllPostagens().subscribe( (resp: Postagem[])=>{
+      this.postagemList= resp;
+    })
+  }
+
+ 
 }

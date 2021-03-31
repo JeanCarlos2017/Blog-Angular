@@ -57,6 +57,36 @@
         <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel"
             aria-labelledby="nav-todas-postagens-tab">
             Todas as postagens
+
+            <!-- todas as postagens em card -->
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col mt-2" *ngFor='let post of postagemList'>
+                    <div class="card" >
+                        <div class="card-body">
+                            <h5 class="card-title m-0">{{post.titulo}}</h5>
+                            <small *ngIf='post.tema != null' class="text-muted"> Tema: {{post.tema.descricao}}</small>
+                            <p class="card-text mt-3">{{post.texto}}</p>
+                            <p class="card-text">
+                              <small class="text-muted">
+                                {{post.data | date: 'dd/MM/yyyy'}} às {{post.data | date: 'HH:mm'}}                               
+                              </small>
+                            </p>
+                            <p *ngIf='post.usuario != null; then templateUsuario else templateUsuarioNaoExistente'>
+                                If e Else == nunca será mostrado 
+                            </p>
+                            <ng-template #templateUsuario>
+                                <small class="text-muted">by {{post.usuario.nome}} </small>
+                            </ng-template>
+                            
+                            <ng-template #templateUsuarioNaoExistente>
+                                <small class="text-muted">by Desconhecido </small>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- todas as postagens em card -->
         </div>
         <!-- minhas postagens -->
         <div class="tab-pane fade" id="minhas-postagens" role="tabpanel" aria-labelledby="nav-minhas-postagens-tab">
