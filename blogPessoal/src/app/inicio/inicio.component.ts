@@ -54,6 +54,7 @@ export class InicioComponent implements OnInit {
   getAllTemas(){
     this.temaService.getAllTema().subscribe( (resp: Tema[])=>{
       this.temaList= resp;
+      console.log(resp)
     })
   }
 
@@ -90,4 +91,7 @@ export class InicioComponent implements OnInit {
         this.user= resp;
     })
   }
+
+
+  
 }
