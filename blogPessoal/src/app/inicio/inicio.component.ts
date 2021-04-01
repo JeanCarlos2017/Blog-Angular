@@ -77,6 +77,9 @@ export class InicioComponent implements OnInit {
 
       //atualiz a lista de postagens 
       this.getAllPostagens();
+
+      //atualiza o usuário 
+      this.findByIdUser();
     })
   }
 
