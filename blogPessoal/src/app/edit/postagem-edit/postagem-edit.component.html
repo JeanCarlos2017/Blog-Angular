@@ -1,0 +1,42 @@
+<div class="container mt-5 mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center text-secondary">Atualizar Postagem</h1>
+        </div>
+    </div>
+    <form>
+        <!-- titulo -->
+        <div class="form-group ">
+            <label for="titulo">Título</label>
+            <input [(ngModel)]='postagem.titulo' name="titulo" type="text" class="form-control" id="titulo"
+                placeholder="escreva o título">
+        </div>
+        
+        <!-- texto/corpo-->
+        <div class="form-group">
+            <label for="texto">Texto</label>
+            <textarea [(ngModel)]='postagem.texto' name="texto" class="form-control" id="texto"
+                placeholder="digite o texto de sua postagem" aria-describedby="ajuda-postagem">
+            </textarea>
+            <small id="ajuda-postagem" class="form-text text-muted">Dica: para conseguir um maior engajamento escreva um
+                texto claro e objetivo</small>
+        </div>
+        
+        <!-- tema -->
+        <div class="form-group">
+            <label for="tema">Selecione um tema </label>
+            <select name="tema" id="tema" class="form-control" [(ngModel)]='idTema' (change)='findByIdTema()'>
+                <option value="">Temas</option>
+                <option *ngFor='let tema of temaList' value="{{tema.id}}">
+                    {{tema.descricao}}
+                </option>
+            </select>
+        </div>
+        <!-- fim tema -->
+
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-danger mr-3" routerLink='/inicio'> Cancelar</button>
+            <button class="btn btn-success" (click)='atualizar()'> Atualizar </button>
+        </div>
+    </form>
+</div>
