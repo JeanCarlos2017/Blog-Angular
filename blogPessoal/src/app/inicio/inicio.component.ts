@@ -37,6 +37,7 @@ export class InicioComponent implements OnInit {
      ) { }
 
   ngOnInit(): void {
+    window.scroll(0,0);
     this.sair();
     this.title.setTitle("Página Inicial do Blog");
     this.getAllTemas();
