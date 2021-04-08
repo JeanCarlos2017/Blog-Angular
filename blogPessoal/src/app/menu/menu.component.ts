@@ -18,6 +18,7 @@ export class MenuComponent implements OnInit {
   nome: string= environment.nome;
   foto: string= environment.foto;
   codigo_usuario: number= environment.codigo_usuario;
+  id_usuario: number= environment.id;
 
   constructor(private router: Router) { }
 

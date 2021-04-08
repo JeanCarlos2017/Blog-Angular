@@ -5,6 +5,7 @@ import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delet
 import { TemaDeleteComponent } from './delete/tema-delete/tema-delete.component';
 import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.component';
 import { TemaEditComponent } from './edit/tema-edit/tema-edit.component';
+import { UserEditComponent } from './edit/user-edit/user-edit.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { LoginComponent } from './login/login.component';
 import { TemaComponent } from './tema/tema.component';
@@ -12,40 +13,44 @@ import { TemaComponent } from './tema/tema.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/entrar', 
+    redirectTo: '/entrar',
     pathMatch: 'full'
   },
   {
-    path: 'entrar', 
-    component: LoginComponent 
-  }, 
+    path: 'entrar',
+    component: LoginComponent
+  },
   {
     path: 'cadastrar',
     component: CadastroComponent
-  }, 
+  },
   {
     path: 'inicio',
     component: InicioComponent
   },
   {
-    path: 'tema', 
+    path: 'tema',
     component: TemaComponent
   },
   {
     path: 'tema-edit/:id', //pasando parametro por rota no angular 
     component: TemaEditComponent
-  }, 
+  },
   {
     path: 'tema-delete/:id',
     component: TemaDeleteComponent
-  }, 
+  },
   {
     path: 'postagem-delete/:id',
-    component: PostagemDeleteComponent, 
-  }, 
+    component: PostagemDeleteComponent,
+  },
   {
     path: 'postagem-edit/:id',
     component: PostagemEditComponent
+  },
+  {
+    path: 'user-edit/:id',
+    component: UserEditComponent
   }
 ];
 
@@ -53,6 +58,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
-  
+export class AppRoutingModule {
+
 }

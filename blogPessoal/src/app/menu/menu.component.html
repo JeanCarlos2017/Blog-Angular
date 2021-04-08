@@ -24,7 +24,7 @@
                 <fa-icon [icon]="faUserEdit" class="fs-25 ml-2 pl-2 text-white"></fa-icon>
             </button>
             <div class="dropdown-menu menu-perfil-dropdown">
-                <a class="dropdown-item d-flex justify-content-between align-items-center m-0 p-2" href="#">
+                <a [routerLink]="['/user-edit', id_usuario]" class="dropdown-item d-flex justify-content-between align-items-center m-0 p-2" >
                     <span class="fs-14">Configurações</span> 
                     <fa-icon [icon]="faUserCog" class="fs-16 text-secondary d-flex align-items-center"></fa-icon> 
                 </a>

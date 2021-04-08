@@ -32,4 +32,9 @@ export class AuthService {
     }
     return ok;
   }
+
+  atualizar(user: User): Observable<User>{
+    return this.http.put<User>('http://localhost:8080/usuario/atualizar', user);
+  }
+  
 }
