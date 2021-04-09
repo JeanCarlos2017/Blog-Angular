@@ -18,6 +18,10 @@ export class PostagemService {
     return this.httpClient.get<Postagem[]>('http://localhost:8080/postagem', this.token);
   }
 
+  getAllByTituloContaining(titulo: string): Observable<Postagem[]>{
+    return this.httpClient.get<Postagem[]>(`http://localhost:8080/postagem/titulo/${titulo}`, this.token);
+  }
+
   postPostagem(post: Postagem): Observable<Postagem>{
     return this.httpClient.post<Postagem>('http://localhost:8080/postagem', post, this.token);
   }

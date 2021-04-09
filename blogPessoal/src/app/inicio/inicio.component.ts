@@ -29,6 +29,9 @@ export class InicioComponent implements OnInit {
   key='data';
   reverse= true;
 
+  //pesquisa de postagem 
+  tituloPost: string;
+
   token= {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
@@ -101,6 +104,13 @@ export class InicioComponent implements OnInit {
     })
   }
 
-
-  
+  findByTituloPostagem() {
+    if (this.tituloPost === '') {
+      this.getAllPostagens();
+    } else {
+      this.postagemService.getAllByTituloContaining(this.tituloPost).subscribe((resp: Postagem[]) => {
+        this.postagemList = resp;
+      })
+    }
+}
 }
