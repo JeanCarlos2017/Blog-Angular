@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
 import { User } from '../model/User';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
@@ -33,7 +34,8 @@ export class InicioComponent implements OnInit {
      private title: Title, 
      private postagemService: PostagemService, 
      private temaService: TemaService, 
-     private authService: AuthService
+     private authService: AuthService,
+     private alertService: AlertasService
      ) { }
 
   ngOnInit(): void {
@@ -47,7 +49,7 @@ export class InicioComponent implements OnInit {
 
   sair(){
     if(environment.token == ''){
-      alert("Sua seção foi encerrada, faça o login novamente");
+      this.alertService.showAlert("Sua seção foi encerrada, faça o login novamente", "info")
       this.router.navigate(['/entrar']);
     }
   }
@@ -72,7 +74,7 @@ export class InicioComponent implements OnInit {
     //enviando para o service 
     this.postagemService.postPostagem(this.postagem).subscribe( (resp: Postagem)=>{
       this.postagem= resp;
-      alert('Postagem cadastrada com sucesso!')
+     this.alertService.showAlert('Postagem cadastrada com sucesso!', 'success');
       this.postagem= new Postagem();
 
       //atualiz a lista de postagens 
