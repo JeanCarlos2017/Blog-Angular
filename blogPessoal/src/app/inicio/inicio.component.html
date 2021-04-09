@@ -119,11 +119,20 @@
         <!-- postagens por tema -->
         <div  class="tab-pane fade" id="postagemTema" role="tabpanel"
             aria-labelledby="nav-postagem-tema-tab">
+
+            <div class="row d-flex justify-content-center mt-5 mb-5">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Pesquise a postagem por tema:" [(ngModel)]= 'tituloTema' (keyup)="findByTituloTema()">
+                </div>
+
+            </div>
+
             <div *ngFor='let tema of temaList' class="row row-cols-1 row-cols-md-2 g-4">
                 <div class="col mt-2" *ngFor='let post of tema.postagemList | orderBy: key: reverse'>
                     <div class="card" >
                         <div class="card-body">
                             <h5 class="card-title m-0">{{post.titulo}}</h5>
+                            <p class="card-text mt-3">Tema: {{tema.descricao}}</p>
                            <p class="card-text mt-3">{{post.texto}}</p>
                             <p class="card-text">
                               <small class="text-muted">

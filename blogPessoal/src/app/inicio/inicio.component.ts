@@ -31,6 +31,8 @@ export class InicioComponent implements OnInit {
 
   //pesquisa de postagem 
   tituloPost: string;
+  //pesquia tea 
+  tituloTema: string;
 
   token= {
     headers: new HttpHeaders().set('Authorization', environment.token)
@@ -112,5 +114,16 @@ export class InicioComponent implements OnInit {
         this.postagemList = resp;
       })
     }
-}
+  }
+
+  findByTituloTema(){
+    if(this.tituloTema === ''){
+      this.getAllTemas();
+    }else{
+      this.temaService.getByNome(this.tituloTema).subscribe( (resp: Tema[]) =>{
+        this.temaList= resp;
+        console.log(resp)
+      })
+    }
+  }
 }
