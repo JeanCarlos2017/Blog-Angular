@@ -25,6 +25,10 @@ export class InicioComponent implements OnInit {
   idUser= environment.id;
   postagemList: Postagem[];
 
+  //ordenação 
+  key='data';
+  reverse= true;
+
   token= {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
