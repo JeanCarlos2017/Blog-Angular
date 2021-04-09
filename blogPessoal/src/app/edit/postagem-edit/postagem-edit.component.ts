@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Postagem } from 'src/app/model/Postagem';
 import { Tema } from 'src/app/model/Tema';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { PostagemService } from 'src/app/service/postagem.service';
 import { TemaService } from 'src/app/service/tema.service';
 import { environment } from 'src/environments/environment.prod';
@@ -24,7 +25,8 @@ export class PostagemEditComponent implements OnInit {
     private routerActived: ActivatedRoute,
     private postagemService: PostagemService, 
     private temaService: TemaService,
-    private title: Title
+    private title: Title,
+    private alertService: AlertasService
   ) { }
 
   ngOnInit(): void {
@@ -54,7 +56,7 @@ export class PostagemEditComponent implements OnInit {
 
     this.postagemService.putPostagem(this.postagem).subscribe( (resp: Postagem)=>{
       this.postagem= resp;
-      alert("Postagem atualizada com sucesso!");
+      this.alertService.showAlert('Postagem atualizada  com sucesso!', 'success') 
       this.router.navigate(['/inicio']);
     })
 

@@ -2,6 +2,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/User';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -15,7 +16,8 @@ export class UserEditComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private routerActive: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private alertService: AlertasService
   ) { }
 
   user: User = new User
@@ -50,8 +52,7 @@ export class UserEditComponent implements OnInit {
       this.authService.atualizar(this.user).subscribe((resp: User) => {
         this.user = resp;
 
-       
-        alert('Usuário atualizado com sucesso, faça o login novamente');
+        this.alertService.showAlert('Usuário atualizado com sucesso, faça o login novamente', 'success') 
         //reseta o environment
         environment.token = '';
         environment.nome = '';
@@ -62,12 +63,13 @@ export class UserEditComponent implements OnInit {
 
       }, erro => {
         if (erro.status == 400) {
-          alert(erro.error.titulo)
+          this.alertService.showAlert(erro.error.titulo, 'danger') 
+          
         }
       });
 
     } else {
-      alert('As senhas não correspondem')
+      this.alertService.showAlert('As senhas não correspondem', 'danger') 
     }
   }
 
