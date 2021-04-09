@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { UserLogin } from '../model/UserLogin';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -13,7 +14,8 @@ import { AuthService } from '../service/auth.service';
 export class LoginComponent implements OnInit {
 
   userLogin: UserLogin= new UserLogin();
-  constructor(private authService: AuthService, private router: Router, private title: Title) { }
+  constructor(private authService: AuthService, private router: Router, private title: Title,
+          private alertService: AlertasService) { }
 
   ngOnInit(): void {
     this.title.setTitle("Entre no Blog");
@@ -32,11 +34,14 @@ export class LoginComponent implements OnInit {
         
         //informo o usuário e o redireciono
         this.router.navigate(['/inicio']);
-        alert('usuario logado com sucesso!');
+        //alert('usuario logado com sucesso!');
+        this.alertService.showAlert('usuario logado com sucesso!', 'success')
 
     }, erro =>{
       if(erro.status == 404){
-        alert(erro.error.titulo)
+        //alert(erro.error.titulo)
+        this.alertService.showAlert(erro.error.titulo, 'danger')
+        
       }
     });
   }

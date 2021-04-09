@@ -22,8 +22,7 @@ export class TemaComponent implements OnInit {
       //alert("Sua seção foi encerrada, faça o login novamente");
       this.router.navigate(['/entrar']);
     }
-
-    this.findAllTema();
+    
   }
 
   cadastrar(){
