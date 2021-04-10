@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
         environment.foto= this.userLogin.url_foto;
         environment.codigo_usuario= this.userLogin.codigo_usuario;
         environment.token= this.userLogin.token;
+        environment.tipo_usuario= this.userLogin.tipo;
         
         //informo o usuário e o redireciono
         this.router.navigate(['/inicio']);

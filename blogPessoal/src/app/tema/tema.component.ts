@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Tema } from '../model/Tema';
+import { AlertasService } from '../service/alertas.service';
 import { TemaService } from '../service/tema.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class TemaComponent implements OnInit {
   tema: Tema= new Tema();
   listaTemas: Tema[];
 
-  constructor(private router: Router, private title: Title, private temaService: TemaService ) { }
+  constructor(private router: Router, private title: Title, private temaService: TemaService,
+    private alertService: AlertasService ) { }
 
   ngOnInit() {
     this.title.setTitle("Página de Temas do Blog");
@@ -22,7 +24,12 @@ export class TemaComponent implements OnInit {
       //alert("Sua seção foi encerrada, faça o login novamente");
       this.router.navigate(['/entrar']);
     }
-    
+    if(environment.tipo_usuario !== 'administrador'){
+      this.alertService.showAlert("Lamento, mas você não é administrador, portanto não pode acessar essa área", 'info');
+      this.router.navigate(['/inicio']);
+    }
+
+    this.findAllTema();
   }
 
   cadastrar(){
